@@ -2,20 +2,21 @@ import React from 'react';
 import CharacterCard from './CharacterCard';
 import './App.css';
 import _ from 'lodash'
+import ironman from './ironman3.jpg'
 
-let message = 'HelloMaMa'
+let message = 'IRONMAN'
 
 const prepareStateFromWord = (given_word) => {
   let word = given_word.toUpperCase()
   let chars = _.shuffle(Array.from(word))
   return {
-  word,
-  chars,
-  attempt: 1,
-  guess: [],
-  completed: false
+    word,
+    chars,
+    attempt: 1,
+    guess: [],
+    completed: false
   }
- }
+}
 
 class App extends React.Component {
 
@@ -23,47 +24,50 @@ class App extends React.Component {
 
   activationHandler = (c) => {
     let guess = [...this.state.guess, c]
-    this.setState({guess})
-    if(guess.length == this.state.chars.length){
-    if(guess.join('').toString() == this.state.word){
-    this.setState({guess: [], completed: true})
-    }else{
-    this.setState({guess: [], attempt: this.state.attempt + 1})
+    this.setState({ guess })
+    if (guess.length == this.state.chars.length) {
+      if (guess.join('').toString() == this.state.word) {
+        this.setState({ guess: [], completed: true })
+      } else {
+        this.setState({ guess: [], attempt: this.state.attempt + 1 })
+      }
     }
-    }
-   }
+  }
 
   render() {
     return (
-      <div>
-        {
-          Array.from(this.state.chars).map((item, index) => (
-            <CharacterCard
-              value={item}
-              key={index}
-              activationHandler={this.activationHandler}
-            />
-          ))
 
-        }
-        <h2>Selected</h2>
-        {
-          Array.from(this.state.guess).map((item, index) => (
-            <CharacterCard
-              value={item}
-              key={index}
-              activationHandler={this.activationHandler}
-            />
-          ))
 
-        }
-        <div>Attemp {this.state.attempt}</div>
-        {
-          this.state.completed && <h4>completed</h4>
-        }
-      </div>
-    )
-  }
-}
+        <div>
+          <img src={ironman} width="350" height="400" />
+          {
+            Array.from(this.state.chars).map((item, index) => (
+              <CharacterCard
+                value={item}
+                key={index}
+                activationHandler={this.activationHandler}
+              />
+            ))
 
-export default App;
+          }
+          <h2>Selected</h2>
+          {
+            Array.from(this.state.guess).map((item, index) => (
+              <CharacterCard
+                value={item}
+                key={index}
+                activationHandler={this.activationHandler}
+              />
+            ))
+
+          }
+          <div>Attemp {this.state.attempt}</div>
+          {
+            this.state.completed && <h1>completed</h1>
+          }
+        </div>
+        )
+      }
+    }
+    
+    export default App;
