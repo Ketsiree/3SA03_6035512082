@@ -1,0 +1,32 @@
+.card {
+  display: inline-block;
+  text-align: center;
+  width: 3em;
+  font-size: 2em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 1em;
+  user-select: none;
+ }
+
+ .activeCard {
+  color:black ;
+  background :blue;
+ } 
+
+ body{
+   color: white;
+   padding: 40px;
+   font-family: Arial;
+   text-align: center;
+   background-image: url("https://www.hdwallpapers.in/download/iron_man_contest_of_champions-HD.jpg");
+
+ }
+ 
+ img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 20%;
+}
+ 
